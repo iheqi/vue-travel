@@ -3,10 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import './assets/styles/reset.css'
+import './assets/styles/border.css'
+
+import fastClick from 'fastClick'
 
 Vue.config.productionTip = false
+fastClick.attach(document.body)
 
 /* eslint-disable no-new */
+/* 根组件 */
 new Vue({
   el: '#app',
   router,
