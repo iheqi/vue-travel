@@ -22,7 +22,7 @@ export default {
   props: {
     city: String
   },
-  mounted() {
+  mounted () {
     console.log(this.city)
   }
   

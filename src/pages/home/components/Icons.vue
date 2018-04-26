@@ -30,7 +30,7 @@ export default {
     }
   },
   computed: {
-    pages() {
+    pages () {
       const pages = []
       this.list.forEach((icon, index) => {
         const page = Math.floor(index / 8)

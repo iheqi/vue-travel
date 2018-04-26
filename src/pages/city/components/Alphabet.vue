@@ -27,8 +27,8 @@ export default {
   computed: {
     letters () {
       const letters = []
-      for (let key in this.cities) {
-        letters.push(key)
+      for (let letter in this.cities) {
+        letters.push(letter)
       }
       return letters
     }
