@@ -21,7 +21,7 @@
         </div>
         
      
-        <div class="area" v-for='(item, key) of cities' :key='key'>
+        <div class="area" v-for='(item, key) of cities' :key='key' :ref='key'>
           <div class="title border-topbottom">{{key}}</div>
           <div class="item-list">
             <div class="item border-bottom" v-for='innerItem of item' :key="innerItem.id">
@@ -40,7 +40,18 @@ export default {
   name: 'CityList',
   props: {
     cities: Object,
-    hot: Array
+    hot: Array,
+    letter: String
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+                        // 因为获取v-for中的元素得到的会是一个元素数组，
+                        // 就像getElementsByTagName那样，所有用下标获到真正的元素
+        const element = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(element)
+      }
+    }
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
