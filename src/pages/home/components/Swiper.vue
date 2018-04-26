@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption" v-if="showSwiper">
 
-        <swiper-slide v-for='img of swiperList' :key='img.id'>
+        <swiper-slide v-for='img of list' :key='img.id'>
             <img class='swiper-img' :src="img.imgUrl" />
         </swiper-slide>
         
@@ -15,20 +15,22 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+        list: Array
+  },
   data () {
       return {
           swiperOption: {
               pagination: '.swiper-pagination',
               loop: true
           },
-          swiperList: [{
-              id: '0001',
-              imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/f3/7d76e56716bad002.jpg_640x200_6c45b28a.jpg'
-          }, {
-              id: '0002',
-              imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/2c/4a64ed2e384e0b02.jpg_640x200_da6dfd87.jpg'
-          }]
       } 
+  },
+  /* 解决当list还是[]时渲染的问题 */
+  computed: {
+      showSwiper() {
+          return this.list.length
+      }
   }
 }
 </script>

@@ -5,7 +5,7 @@
       
         <div class="icon" v-for="icon of page" :key="icon.id">
           <div class="icon-img">
-            <img class='icon-img-content' :src="icon.iconUrl"/>
+            <img class='icon-img-content' :src="icon.imgUrl"/>
           </div>
           <p class="icon-desc">{{icon.desc}}</p>
         </div>
@@ -19,8 +19,12 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
+<<<<<<< Updated upstream
       iconList: [{
         id: '0001',
         iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
@@ -58,12 +62,17 @@ export default {
         iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/67/9a1678221b8e0e02.png',
         desc: '古北水镇'
       }],
+=======
+      swiperOption: {
+        pagination: '.swiper-pagination',
+      }
+>>>>>>> Stashed changes
     }
   },
   computed: {
     pages() {
       const pages = []
-      this.iconList.forEach((icon, index) => {
+      this.list.forEach((icon, index) => {
         const page = Math.floor(index / 8)
           if (!pages[page]) {
             pages[page] = []
