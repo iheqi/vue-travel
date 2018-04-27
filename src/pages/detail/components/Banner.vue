@@ -1,0 +1,79 @@
+<template>
+    <div>
+        <div class="banner" @click='showGallary'>
+            <img class="banner-img" src="//img1.qunarzz.com/sight/p0/1707/74/745adc9ea6fb840da3.img.jpg_600x330_cb7a6023.jpg"/>
+            <div class="banner-info">
+                <div class="banner-title">长隆水上乐园(AAAAA景区)</div>
+                <div class="banner-num">
+                    <span class="iconfont banner-icon">&#xe692;</span>
+                    199
+                </div>
+            </div>
+        </div>
+        <common-gallary 
+            :imgs='imgs' 
+            v-show="ifShowGallary"
+            @close='hideGallary'
+        ></common-gallary>
+    </div>
+</template>
+
+<script>
+import CommonGallary from 'common/gallary/Gallary'
+export default {
+    name: 'DetailBanner',
+    components: {
+        CommonGallary
+    },
+    data () {
+        return {
+            imgs: ['http://img1.qunarzz.com/sight/p0/1707/c4/c4efdf89877f089da3.img.jpg_r_800x800_7f528adb.jpg',
+                'http://img1.qunarzz.com/sight/p0/1707/d8/d89ab1a9b2ab355ba3.img.jpg_r_800x800_26b963f1.jpg'],
+            ifShowGallary: false
+        }
+    },
+    methods: {
+        showGallary () {
+            this.ifShowGallary = true
+        },
+        hideGallary () {
+            this.ifShowGallary = false
+        }
+    }
+}
+</script>
+
+<style lang="stylus" scoped>
+    .banner
+        overflow : hidden
+        height : 0
+        padding-bottom : 55%
+        position : relative
+        .banner-img
+            width : 100%
+        .banner-info
+            display : flex
+            position : absolute
+            left : 0
+            right : 0
+            bottom : 0
+            line-height : .6rem
+            color : #fff
+            /* 加渐变 */
+            background-image : linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .8))
+            .banner-title
+                flex : 1   /* 写在子元素上的，让所有弹性盒模型对象的子元素都有相同的长度，忽略它们内部的内容 */
+                font-size : .32rem
+                padding : 0 .2rem
+            .banner-num
+                padding : 0 .4rem
+                height : .32rem
+                line-height : .32rem
+                border-radius : .2rem
+                background-color : rgba(0, 0, 0, 0.8)
+                font-size : .24rem
+                margin-top : .14rem 
+                .banner-icon 
+                    font-size : .24rem
+                    
+</style>
