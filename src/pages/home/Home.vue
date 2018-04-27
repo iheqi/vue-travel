@@ -59,9 +59,10 @@ export default {
     },
     mounted() {
         //this.getHomeInfo()
-        this.lastCity = this.city
+        //this.lastCity = this.city
     },
     activated () {
+        console.log(this.lastCity, this.city)
         if (this.lastCity !== this.city) {
             this.getHomeInfo()
             this.lastCity = this.city

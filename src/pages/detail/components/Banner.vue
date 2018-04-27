@@ -6,7 +6,7 @@
                 <div class="banner-title">长隆水上乐园(AAAAA景区)</div>
                 <div class="banner-num">
                     <span class="iconfont banner-icon">&#xe692;</span>
-                    199
+                    19
                 </div>
             </div>
         </div>
@@ -73,6 +73,7 @@ export default {
                 background-color : rgba(0, 0, 0, 0.8)
                 font-size : .24rem
                 margin-top : .14rem 
+                margin-right : .14rem 
                 .banner-icon 
                     font-size : .24rem
                     
