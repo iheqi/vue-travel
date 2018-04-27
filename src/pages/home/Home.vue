@@ -16,45 +16,57 @@ import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
 
 import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'Home',
-  components: {
-      HomeHeader,
-      HomeSwiper,
-      HomeIcons,
-      HomeRecommend,
-      HomeWeekend
-  },
-  data () {
-      return {
-          // city: '',    // 改用vuex了
-          swiperList: [],
-          iconList: [],
-          recommendList: [],
-          weekendList: []
-      }
-  },
-  methods: {
-      getHomeInfo() {
-          axios.get('/static/mock/index.json')
+    name: 'Home',
+    components: {
+        HomeHeader,
+        HomeSwiper,
+        HomeIcons,
+        HomeRecommend,
+        HomeWeekend
+    },
+    data () {
+        return {
+            // city: '',    // 改用vuex了
+            swiperList: [],
+            iconList: [],
+            recommendList: [],
+            weekendList: [],
+            lastCity: ''
+        }
+    },
+    computed: {
+        ...mapState(['city'])
+    },
+    methods: {
+        getHomeInfo() {
+            axios.get('/static/mock/index.json?city=' + this.city)
             .then(this.getHomeInfoSucc)
-      },
-      getHomeInfoSucc(res) {
-          res = res.data
-          if (res.ret && res.data) {
-              const data = res.data
-              // this.city = data.city
-              this.swiperList = data.swiperList
-              this.iconList = data.iconList
-              this.recommendList = data.recommendList
-              this.weekendList = data.weekendList
-          }
-      }
-  },
-  mounted() {
-      this.getHomeInfo()
-  }
+        },
+        getHomeInfoSucc(res) {
+            res = res.data
+            if (res.ret && res.data) {
+                const data = res.data
+                // this.city = data.city
+                this.swiperList = data.swiperList
+                this.iconList = data.iconList
+                this.recommendList = data.recommendList
+                this.weekendList = data.weekendList
+            }
+        }
+    },
+    mounted() {
+        //this.getHomeInfo()
+        this.lastCity = this.city
+    },
+    activated () {
+        if (this.lastCity !== this.city) {
+            this.getHomeInfo()
+            this.lastCity = this.city
+        }
+    }
 }
 </script>
 
