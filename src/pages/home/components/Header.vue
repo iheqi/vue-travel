@@ -17,13 +17,16 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'HomeHeader',
   props: {
-    city: String
+    // city: String      // 改为用vuex
   },
-  mounted () {
-    console.log(this.city)
+ 
+  computed: {
+    ...mapState(['city']),      // mapState用于将vuex的state中的属性映射（解构赋值）到计算属性的city中
+    // ...mapGetters(['doubleCity'])
   }
   
 }
@@ -31,6 +34,7 @@ export default {
 
 <style lang='stylus' scoped>
   @import '~styles/variables.styl';
+  @import '~styles/mixins.styl';
   .header
     display : flex
     line-height : $headerHeight
@@ -53,7 +57,8 @@ export default {
       padding-left : .2rem
       color : #ccc
     .header-right
-      width : 1.24rem
+      min-width : 1.04rem    /* 解决字体过长的问题，这会挤用input的位置（input没固定） */
+      padding : 0 .1rem
       float : right
       text-align : center
       color : #fff

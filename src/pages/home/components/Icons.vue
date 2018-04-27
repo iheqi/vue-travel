@@ -30,7 +30,7 @@ export default {
     }
   },
   computed: {
-    pages () {
+    pages () {          // 解决当图标多余8个时，将图标放到下一个swiper
       const pages = []
       this.list.forEach((icon, index) => {
         const page = Math.floor(index / 8)

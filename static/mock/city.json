@@ -2,6 +2,10 @@
 	"ret": true,
 	"data":{
 		"hotCities": [{
+			"id": 188,
+			"spell": "shanzhoudachengshi",
+			"name": "山洲大城市"
+		}, {
 			"id": 1,
 			"spell": "beijing",
 			"name": "北京"
@@ -17,10 +21,6 @@
 			"id": 239,
 			"spell": "sanya",
 			"name": "三亚"
-		}, {
-			"id": 188,
-			"spell": "lijiang",
-			"name": "丽江"
 		}, {
 			"id": 125,
 			"spell": "guilin",
