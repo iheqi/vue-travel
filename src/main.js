@@ -12,6 +12,7 @@ import fastClick from 'fastClick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 import store from './store'
+import 'babel-polyfill'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
