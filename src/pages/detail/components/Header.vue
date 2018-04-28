@@ -5,12 +5,13 @@
         </router-link>
         <div 
             class="header-fixed" 
+            :style="opacityStyle"
             v-show="!showAbs"
-            :style="opacityStyle">
+        >
             <router-link to="/">
                 <div class="iconfont header-fixed-back">&#xe624;</div>
             </router-link>
-            景点详情
+            景区详情
         </div>
     </div>
 </template>
@@ -23,8 +24,7 @@ export default {
             showAbs: true,
             opacityStyle: {
                 opacity: 0
-            },
-            timer: null
+            }
         }
     },
     activated () {
@@ -78,7 +78,7 @@ export default {
         left : 0
         top : 0
         right : 0
-
+        z-index : 10
         .header-fixed-back
             width: .64rem
             text-align: center 

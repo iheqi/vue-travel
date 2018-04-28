@@ -20,5 +20,8 @@ export default new Router({
     path: '/detail/:id',   /* 动态组件：路径detail/ 后面加一个动态id */
     name: 'Detail',
     component: Detail
-  }]
+  }],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
